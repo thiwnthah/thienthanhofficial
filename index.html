@@ -95,7 +95,6 @@
       background-color: #555;
     }
 
-    /* Tiêu đề hiệu ứng sáng */
     h1 {
       animation: glow 2s infinite;
       font-size: 2.2em;
@@ -111,7 +110,6 @@
       }
     }
 
-    /* Nút nhạc */
     .music-control {
       margin-top: 20px;
       text-align: center;
@@ -130,48 +128,6 @@
 
     .music-control button:hover {
       background-color: #444;
-    }
-
-    /* Discord status đẹp */
-    .discord-status-container {
-      display: flex;
-      align-items: center;
-      background: rgba(0,0,0,0.7);
-      padding: 10px 15px;
-      border-radius: 12px;
-      max-width: 320px;
-      margin: 30px auto 0;
-      box-shadow: 0 0 15px rgba(255,255,0,0.7);
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-
-    .discord-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #ff0;
-      margin-right: 15px;
-      object-fit: cover;
-    }
-
-    .discord-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .discord-username {
-      font-weight: bold;
-      font-size: 18px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .discord-presence {
-      font-size: 14px;
-      color: #aaf26f;
-      margin-top: 4px;
     }
   </style>
 </head>
@@ -211,76 +167,37 @@
       </audio>
     </div>
 
-    <!-- Discord Status -->
-    <div class="discord-status-container" id="discordStatus">
-      <img src="" alt="Avatar Discord" class="discord-avatar" id="discordAvatar" />
-      <div class="discord-info">
-        <div class="discord-username" id="discordUsername">Đang tải...</div>
-        <div class="discord-presence" id="discordPresence">...</div>
-      </div>
+    <!-- Trạng thái Discord đẹp -->
+    <div style="margin-top: 30px; text-align: center;">
+      <img
+        src="https://lanyard-profile-readme.vercel.app/api/1211583504563830840?theme=dark&borderRadius=20px&hideDiscrim=false&idleMessage=Nhàn%20rỗi"
+        alt="Discord Status"
+        style="max-width: 100%; border-radius: 20px; box-shadow: 0 0 10px #ff0;" />
     </div>
+
   </div>
 
   <script>
-  // Menu toggle
-  function toggleMenu() {
-    const dropdown = document.getElementById('dropdownMenu');
-    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
-  }
-
-  // Music toggle
-  const music = document.getElementById('bgMusic');
-  const btn = document.getElementById('musicBtn');
-  let isPlaying = false;
-
-  function toggleMusic() {
-    if (isPlaying) {
-      music.pause();
-      btn.textContent = "Bật nhạc";
-    } else {
-      music.play();
-      btn.textContent = "Tắt nhạc";
+    function toggleMenu() {
+      const dropdown = document.getElementById('dropdownMenu');
+      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
     }
-    isPlaying = !isPlaying;
-  }
 
-  // Lấy trạng thái Discord từ Lanyard
-  async function fetchDiscordStatus() {
-    const userId = '1211583504563830840';
-    const apiUrl = `https://lanyard.cnrad.dev/api/${userId}`;
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    let isPlaying = false;
 
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-
-      if (data.success) {
-        const user = data.data.discord_user;
-        const status = data.data.discord_status;
-
-        const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`;
-        document.getElementById('discordAvatar').src = avatarUrl;
-        document.getElementById('discordUsername').textContent = `${user.username}#${user.discriminator}`;
-
-        let statusText = '';
-        switch (status) {
-          case 'online': statusText = 'Online'; break;
-          case 'idle': statusText = 'Nhàn rỗi'; break;
-          case 'dnd': statusText = 'Không làm phiền'; break;
-          case 'offline': statusText = 'Ngoại tuyến'; break;
-          default: statusText = status;
-        }
-
-        document.getElementById('discordPresence').textContent = statusText;
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        btn.textContent = "Bật nhạc";
       } else {
-        document.getElementById('discordUsername').textContent = 'Không tìm thấy người dùng';
-        document.getElementById('discordPresence').textContent = '';
+        music.play();
+        btn.textContent = "Tắt nhạc";
       }
-    } catch (error) {
-      document.getElementById('discordUsername').textContent = 'Lỗi kết nối';
-      document.getElementById('discordPresence').textContent = '';
+      isPlaying = !isPlaying;
     }
-  }
+  </script>
 
-  // Gọi khi trang load
-  fetchDiscordStatus();
-</script>
+</body>
+</html>
