@@ -131,6 +131,17 @@
     .music-control button:hover {
       background-color: #444;
     }
+
+    /* Trạng thái Discord */
+    .discord-status {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .discord-status img {
+      border-radius: 10px;
+      max-width: 90%;
+    }
   </style>
 </head>
 <body>
@@ -152,17 +163,22 @@
     <p>Website Share Mods, Hack, Bypass, Code.</p>
 
     <div class="social-buttons">
-      <a href="https://youtube.com/@thienthanhsamp_official" target="_blank"><b>YOUTUBE</b></a>
-      <a href="https://discord.gg/YVAact85mz" target="_blank"><b>DISCORD </b></a>
+      <a href="https://youtube.com/@thienthanhsamp_official" target="_blank"><b>YouTube</b></a>
+      <a href="https://discord.gg/YVAact85mz" target="_blank"><b>Discord</b></a>
     </div>
 
     <!-- Trình phát nhạc -->
     <div class="music-control">
-      <button onclick="toggleMusic()" id="musicBtn">OPEN MUSIC</button>
+      <button onclick="toggleMusic()" id="musicBtn">OPEN</button>
       <audio id="bgMusic" loop>
         <source src="https://thiwnthah.github.io/thienthanhofficial/music/thienthanhsamp.mp3" type="audio/mp3">
         Trình duyệt không hỗ trợ phát nhạc.
       </audio>
+    </div>
+
+    <!-- Trạng thái Discord -->
+    <div class="discord-status">
+      <img src="https://lanyard.cnrad.dev/api/1211583504563830840" alt="Discord Status" />
     </div>
   </div>
 
@@ -189,4 +205,4 @@
   </script>
 
 </body>
-</html>
+        </html>
