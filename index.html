@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>THIÊN THANH OFFICIAL</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://img.upanh.tv/2025/05/16/Snaptik.app_74819896211365757525.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+      user-select: none;
+      color: white;
+    }
+
+    .dropdown {
+      display: none;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.95);
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #444;
+      border-top: 1px solid #444;
+      padding: 15px;
+      z-index: 999;
+    }
+
+    .dropdown a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    .dropdown a:hover {
+      color: #ddd;
+    }
+
+    .content {
+      padding: 30px 20px 50px 20px;
+      text-align: center;
+    }
+
+    .social-buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .social-buttons a, .social-buttons button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .social-buttons a:hover, .social-buttons button:hover {
+      background-color: #555;
+    }
+
+    .glow-text {
+      animation: glow 2s infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+      }
+      50% {
+        text-shadow: 0 0 20px #ff0, 0 0 30px #ff0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo glow-text">THIÊN THANH OFFICIAL</div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <div class="dropdown" id="dropdownMenu">
+    <a href="index.html">Home</a>
+    <a href="youtube.html">YouTube</a>
+    <a href="#">Shop</a>
+    <a href="#">Client</a>
+    <a href="#">Modpack</a>
+    <a href="#">Other</a>
+  </div>
+
+  <!-- DISCORD STATUS -->
+  <div style="margin-top: 90px; text-align: center;">
+    <img
+      src="https://lanyard-profile-readme.vercel.app/api/1211583504563830840?theme=dark&borderRadius=20px&hideDiscrim=false&idleMessage=Nhàn%20rỗi"
+      alt="Discord Status"
+      style="max-width: 90%; border-radius: 20px; box-shadow: 0 0 10px #ff0;" />
+  </div>
+
+  <!-- NUT YOUTUBE + DISCORD + NHAC -->
+  <div class="social-buttons">
+    <a href="https://youtube.com/@thienthanhsamp_official" target="_blank"><b>YouTube</b></a>
+    <a href="https://discord.gg/YVAact85mz" target="_blank"><b>Discord</b></a>
+    <button onclick="toggleMusic()" id="musicBtn">Bật nhạc</button>
+  </div>
+
+  <!-- TIÊU ĐỀ & MÔ TẢ -->
+  <div class="content">
+    <h1 class="glow-text">THIÊN THANH OFFICIAL</h1>
+    <p>Website Share Mods, Hack, Bypass, Code.</p>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://thiwnthah.github.io/thienthanhofficial/music/thienthanhsamp.mp3" type="audio/mp3">
+    Trình duyệt không hỗ trợ nhạc.
+  </audio>
+
+  <script>
+    function toggleMenu() {
+      const dropdown = document.getElementById('dropdownMenu');
+      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        btn.textContent = "Bật nhạc";
+      } else {
+        music.play();
+        btn.textContent = "Tắt nhạc";
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>
