@@ -110,12 +110,32 @@
         text-shadow: 0 0 20px #ff0, 0 0 30px #ff0;
       }
     }
+
+    /* Nút nhạc */
+    .music-control {
+      margin-top: 20px;
+    }
+
+    .music-control button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .music-control button:hover {
+      background-color: #444;
+    }
   </style>
 </head>
 <body>
 
   <nav class="navbar">
-    <div class="logo"></div>
+    <div class="logo">THIÊN THANH</div>
     <div class="menu-icon" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </div>
@@ -124,10 +144,10 @@
   <div class="dropdown" id="dropdownMenu">
     <a href="https://thiwnthah.github.io/thienthanhofficial/index.html">Home</a>
     <a href="https://thiwnthah.github.io/thienthanhofficial/youtube.html">YouTube</a>
-    <a href="https://thiwnthah.github.io/thienthanhofficial/index.html#">Shop</a>
-    <a href="https://thiwnthah.github.io/thienthanhofficial/index.html#">Client</a>
-    <a href="https://thiwnthah.github.io/thienthanhofficial/index.html#">Modpack</a>
-    <a href="https://thiwnthah.github.io/thienthanhofficial/index.html#">Other</a>
+    <a href="#">Shop</a>
+    <a href="#">Client</a>
+    <a href="#">Modpack</a>
+    <a href="#">Other</a>
   </div>
 
   <div class="content">
@@ -138,16 +158,36 @@
       <a href="https://youtube.com/@thienthanhsamp_official" target="_blank"><b>YouTube</b></a>
       <a href="https://discord.gg/YVAact85mz" target="_blank"><b>Discord</b></a>
     </div>
+
+    <!-- Trình phát nhạc -->
+    <div class="music-control">
+      <button onclick="toggleMusic()" id="musicBtn">Bật nhạc</button>
+      <audio id="bgMusic" loop>
+        <source src="https://thiwnthah.github.io/thienthanhofficial/music/thienthanhsamp.mp3" type="audio/mp3">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+      </audio>
+    </div>
   </div>
 
   <script>
     function toggleMenu() {
       const dropdown = document.getElementById('dropdownMenu');
-      if (dropdown.style.display === 'flex') {
-        dropdown.style.display = 'none';
+      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        btn.textContent = "Bật nhạc";
       } else {
-        dropdown.style.display = 'flex';
+        music.play();
+        btn.textContent = "Tắt nhạc";
       }
+      isPlaying = !isPlaying;
     }
   </script>
 
